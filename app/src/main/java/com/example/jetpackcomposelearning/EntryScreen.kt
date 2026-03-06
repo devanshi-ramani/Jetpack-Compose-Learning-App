@@ -35,7 +35,7 @@ fun EntryScreen() {
             horizontalArrangement = Arrangement.Center
         ) { Text(" HOMESCREEN ", fontFamily = FontFamily.SansSerif,  fontSize = 28.sp)}
 
-        Button(onClick = { ComposeFundamentals() },
+        Button(onClick = {  },
             shape = RoundedCornerShape(7.dp),
             modifier = Modifier.fillMaxWidth(0.9f).weight(0.05f).padding(10.dp)
         ){
