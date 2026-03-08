@@ -42,7 +42,7 @@ fun EntryScreen() {
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Gray
+            color = PurpleGrey40
         )
 
         Spacer(modifier = Modifier.height(20.dp))
