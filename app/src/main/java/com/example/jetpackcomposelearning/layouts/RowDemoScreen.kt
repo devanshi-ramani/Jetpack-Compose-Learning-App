@@ -1,10 +1,8 @@
 package com.example.jetpackcomposelearning.layouts
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -21,21 +19,21 @@ fun RowDemoScreen(onBackClick: () -> Unit) {
         onBackClick = onBackClick
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.padding(horizontal = 20.dp),
             elevation = CardDefaults.cardElevation(6.dp),
             shape = RoundedCornerShape(16.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                Text("Left")
-                Spacer(modifier = Modifier.width(20.dp))
-                Text("Center")
-                Spacer(modifier = Modifier.width(20.dp))
-                Text("Right")
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    Text("Devanshi")
+                    Text("Ramani")
+                    Text("is")
+                    Text("an")
+                    Text("intern")
+                }
             }
         }
     }
-}

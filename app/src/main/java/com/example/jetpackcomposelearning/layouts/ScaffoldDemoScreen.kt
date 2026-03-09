@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScaffoldDemoScreen(onBackClick: () -> Unit) {
@@ -22,28 +24,27 @@ fun ScaffoldDemoScreen(onBackClick: () -> Unit) {
             Scaffold(
                 topBar = {
                     TopAppBar(
-                        title = { Text("TopAppBar") }
+                        title = { Text("TopAppBar", color = Color.White, fontSize = 17.sp) },
+                        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.DarkGray)
                     )
                 },
 
                 bottomBar = {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(60.dp)
-                            .background(Color.DarkGray),
-                        contentAlignment = Alignment.Center
+                    BottomAppBar(
+                        modifier = Modifier.fillMaxWidth(),
+                        containerColor = Color.DarkGray,
+                        contentColor = Color.White
                     ) {
-                        Text("BottomBar", color = Color.White)
+                        Text("BottomAppBar", color = Color.White, fontSize = 18.sp)
                     }
                 },
 
                 floatingActionButton = {
                     FloatingActionButton(
                         onClick = {},
-                        containerColor = Color.Black
+                        containerColor = Color.DarkGray
                     ) {
-                        Text("FAB")
+                        Text("FAB", color = Color.White, fontSize = 18.sp)
                     }
                 }
 
@@ -56,7 +57,7 @@ fun ScaffoldDemoScreen(onBackClick: () -> Unit) {
                         .background(Color.LightGray),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("Main Content")
+                    Text("Main Content", color = Color.Black, fontSize = 18.sp)
                 }
 
             }

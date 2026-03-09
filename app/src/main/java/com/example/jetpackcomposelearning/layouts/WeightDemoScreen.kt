@@ -30,7 +30,7 @@ fun WeightDemoScreen(onBackClick: () -> Unit) {
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxSize()
-                    .background(Color.Cyan),
+                    .background(Color.Gray),
                 contentAlignment = Alignment.Center
             ) {
                 Text("1f")
@@ -40,7 +40,7 @@ fun WeightDemoScreen(onBackClick: () -> Unit) {
                 modifier = Modifier
                     .weight(2f)
                     .fillMaxSize()
-                    .background(Color.Yellow),
+                    .background(Color.DarkGray),
                 contentAlignment = Alignment.Center
             ) {
                 Text("2f")

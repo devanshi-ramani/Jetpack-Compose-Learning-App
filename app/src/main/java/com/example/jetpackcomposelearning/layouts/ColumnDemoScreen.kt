@@ -1,9 +1,7 @@
 package com.example.jetpackcomposelearning.layouts
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -21,7 +19,7 @@ fun ColumnDemoScreen(onBackClick: () -> Unit) {
         onBackClick = onBackClick
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp),
+            modifier = Modifier.padding(horizontal = 20.dp),
             elevation = CardDefaults.cardElevation(6.dp),
             shape = RoundedCornerShape(16.dp)
         ) {
