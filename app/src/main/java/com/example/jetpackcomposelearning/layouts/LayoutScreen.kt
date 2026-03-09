@@ -33,6 +33,7 @@ enum class LayoutScreenType {
     COLUMN,
     ROW,
     BOX,
+    SCAFFOLD,
     ALIGNMENT,
     WEIGHT
 }
@@ -46,8 +47,10 @@ fun LayoutSystemScreen() {
             onColumnClick = { currentScreen = LayoutScreenType.COLUMN },
             onRowClick = { currentScreen = LayoutScreenType.ROW },
             onBoxClick = { currentScreen = LayoutScreenType.BOX },
-            onAlignmentClick = { currentScreen = LayoutScreenType.ALIGNMENT },
+            onScaffoldClick = {currentScreen = LayoutScreenType.SCAFFOLD},
+            onAlignmentClick = { currentScreen = LayoutScreenType.ALIGNMENT},
             onWeightClick = { currentScreen = LayoutScreenType.WEIGHT }
+
         )
 
         LayoutScreenType.COLUMN -> ColumnDemoScreen(
@@ -59,6 +62,9 @@ fun LayoutSystemScreen() {
         )
 
         LayoutScreenType.BOX -> BoxDemoScreen(
+            onBackClick = { currentScreen = LayoutScreenType.MENU }
+        )
+        LayoutScreenType.SCAFFOLD -> ScaffoldDemoScreen(
             onBackClick = { currentScreen = LayoutScreenType.MENU }
         )
 
@@ -77,8 +83,10 @@ fun LayoutMenu(
     onColumnClick: () -> Unit,
     onRowClick: () -> Unit,
     onBoxClick: () -> Unit,
+    onScaffoldClick: () -> Unit,
     onAlignmentClick: () -> Unit,
     onWeightClick: () -> Unit
+
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -110,6 +118,11 @@ fun LayoutMenu(
         LayoutMenuButton(
             text = "Box",
             onClick = onBoxClick
+        )
+
+        LayoutMenuButton(
+            text = "Scaffold",
+            onClick = onScaffoldClick
         )
 
         LayoutMenuButton(
@@ -150,27 +163,32 @@ fun DemoScreen(
     content: @Composable () -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
-        Button(onClick = onBackClick) {
+        Button(
+            onClick = onBackClick,
+            modifier = Modifier.padding(start = 17.dp, top = 32.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+        ) {
             Text("Back")
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = title,
-            fontSize = 26.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        content()
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(
+                text = title,
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 28.sp,
+                fontWeight = FontWeight.Bold,
+                color = PurpleGrey40
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            content()
+        }
     }
 }
+
 
 
 
