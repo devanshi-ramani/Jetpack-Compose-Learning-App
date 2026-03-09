@@ -1,12 +1,16 @@
 package com.example.jetpackcomposelearning.layouts
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -17,9 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcomposelearning.ui.theme.Pink80
+import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
 enum class LayoutScreenType {
     MENU,
@@ -74,62 +81,65 @@ fun LayoutMenu(
     onWeightClick: () -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
     ) {
+
         Text(
-            text = "Layout System",
+            text = " Layout Screen ",
+            fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.SansSerif
+            color = PurpleGrey40
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Button(
-            onClick = onColumnClick,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Button 1 → Column")
-        }
-
         Spacer(modifier = Modifier.height(12.dp))
 
-        Button(
-            onClick = onRowClick,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Button 2 → Row")
-        }
+        LayoutMenuButton(
+            text = "Column",
+            onClick = onColumnClick
+        )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        LayoutMenuButton(
+            text = "Row",
+            onClick = onRowClick
+        )
 
-        Button(
-            onClick = onBoxClick,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Button 3 → Box")
-        }
+        LayoutMenuButton(
+            text = "Box",
+            onClick = onBoxClick
+        )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        LayoutMenuButton(
+            text = "Alignment & Arrangement",
+            onClick = onAlignmentClick
+        )
 
-        Button(
-            onClick = onAlignmentClick,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Button 4 → Alignment & Arrangement")
-        }
+        LayoutMenuButton(
+            text = "Weight Example",
+            onClick = onWeightClick
+        )
+    }
+}
 
-        Spacer(modifier = Modifier.height(12.dp))
-
-        Button(
-            onClick = onWeightClick,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Button 5 → Weight Example")
-        }
+@Composable
+fun LayoutMenuButton(
+    text: String,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth(0.9f)
+            .heightIn(min = 100.dp)
+            .padding(vertical = 8.dp),
+        shape = RoundedCornerShape(20.dp),
+        elevation = ButtonDefaults.buttonElevation(8.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+    ) {
+        Text(text = text,modifier = Modifier.fillMaxWidth(), fontSize = 18.sp, textAlign = TextAlign.Center)
     }
 }
 
