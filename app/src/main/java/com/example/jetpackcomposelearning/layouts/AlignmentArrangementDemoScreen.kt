@@ -31,11 +31,13 @@ fun AlignmentArrangementDemoScreen(onBackClick: () -> Unit) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(horizontal = 15.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
 
             item {
+                Text("Note: Arrangement and Alignment are properties of layouts, not layouts themselves. They are used inside layout composables like Row, Column, and Box to control how child elements are placed. ")
+                Spacer(modifier = Modifier.height(10.dp))
                 Text("Column: verticalArrangement")
             }
 

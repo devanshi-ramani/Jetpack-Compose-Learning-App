@@ -35,7 +35,7 @@ enum class LayoutScreenType {
     BOX,
     SCAFFOLD,
     ALIGNMENT,
-    WEIGHT
+    PROPERTIES,
 }
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -49,7 +49,7 @@ fun LayoutSystemScreen() {
             onBoxClick = { currentScreen = LayoutScreenType.BOX },
             onScaffoldClick = {currentScreen = LayoutScreenType.SCAFFOLD},
             onAlignmentClick = { currentScreen = LayoutScreenType.ALIGNMENT},
-            onWeightClick = { currentScreen = LayoutScreenType.WEIGHT }
+            onWeightClick = { currentScreen = LayoutScreenType.PROPERTIES }
 
         )
 
@@ -72,7 +72,7 @@ fun LayoutSystemScreen() {
             onBackClick = { currentScreen = LayoutScreenType.MENU }
         )
 
-        LayoutScreenType.WEIGHT -> WeightDemoScreen(
+        LayoutScreenType.PROPERTIES -> LayoutPropertiesDemoScreen(
             onBackClick = { currentScreen = LayoutScreenType.MENU }
         )
     }
@@ -131,7 +131,7 @@ fun LayoutMenu(
         )
 
         LayoutMenuButton(
-            text = "Weight Example",
+            text = "Layout Properties ",
             onClick = onWeightClick
         )
     }
