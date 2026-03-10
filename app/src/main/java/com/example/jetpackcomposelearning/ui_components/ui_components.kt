@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.homescreen
+package com.example.jetpackcomposelearning.ui_components
 
 import androidx.compose.foundation.layout.Arrangement
 import com.example.jetpackcomposelearning.ui.theme.*
@@ -27,72 +27,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.ChevronRight
 
-@Preview (showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun EntryScreen() {
+fun ui_components(){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    ){
         Text(
-            text = " HOMESCREEN ",
+            text = "UI COMPONENTS ",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = PurpleGrey40
         )
-
         Spacer(modifier = Modifier.height(20.dp))
 
-        MenuButton(title = "Compose Fundamentals", onClick = {})
-        MenuButton(title = "Layout System", onClick = {})
-        MenuButton(title = "UI components", onClick = {})
-        MenuButton(title = "StateManagement", onClick = {})
-        MenuButton(title = "Lists & Navigation", onClick = {})
+        MenuButton(title = "Display Components",onClick = {})
+
     }
 }
-
-@Composable
-fun MenuButton(title : String, onClick : () ->Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth(0.9f)
-            .heightIn(min = 100.dp)
-            .padding(vertical = 8.dp),
-        shape = RoundedCornerShape(20.dp),
-        elevation = ButtonDefaults.buttonElevation(8.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
-    ){
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(text = title, modifier = Modifier.weight(1f), fontSize = 18.sp)
-            Icon( imageVector = Icons.Default.ChevronRight, contentDescription = null)
-
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

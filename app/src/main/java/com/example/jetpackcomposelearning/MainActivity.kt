@@ -16,8 +16,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            EntryScreen()
-//            LayoutSystemScreen()
+//            EntryScreen()
+            LayoutSystemScreen()
 //            ComposeFundamentals()
 
         }
