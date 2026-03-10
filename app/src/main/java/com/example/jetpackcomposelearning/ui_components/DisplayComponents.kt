@@ -28,25 +28,146 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposelearning.ui.theme.Pink80
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
-enum class ComponentType{
+enum class ComponentType {
     MENU,
     TEXT,
     IMAGE,
     ICON
 }
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DisplaySystem(){
-    var currentScreen by remember {mutableStateOf(ComponentType.MENU)}
+fun DisplaySystem() {
+    var currentScreen by remember { mutableStateOf(ComponentType.MENU) }
 
-    when (currentScreen){
+    when (currentScreen) {
         ComponentType.MENU -> ComponentMenu(
-            onTextClick = {currentScreen = ComponentType.TEXT},
+            onTextClick = { currentScreen = ComponentType.TEXT },
+            onImageClick = { currentScreen = ComponentType.IMAGE },
+            onIconClick = { currentScreen = ComponentType.ICON }
+        )
 
+        ComponentType.TEXT -> TextDemoScreen(
+            onBackClick = { currentScreen = ComponentType.MENU },
+        )
+
+        ComponentType.IMAGE -> ImageDemoScreen(
+            onBackClick = { currentScreen = ComponentType.MENU },
+        )
+
+        ComponentType.ICON -> IconDemoScreen(
+            onBackClick = { currentScreen = ComponentType.MENU }
         )
 
     }
 }
+
+@Composable
+fun ComponentMenu(
+    onTextClick: () -> Unit,
+    onImageClick: () -> Unit,
+    onIconClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = " Display Components ",
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = PurpleGrey40
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = " Used to display information to the user. ",
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 18.sp,
+            color = PurpleGrey40
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+
+        ComponentMenuButton(
+            text = "Text",
+            onClick = onTextClick
+        )
+        ComponentMenuButton(
+            text = "Image",
+            onClick = onImageClick
+        )
+        ComponentMenuButton(
+            text = "Icon",
+            onClick = onIconClick
+        )
+    }
+}
+
+@Composable
+fun ComponentMenuButton(
+    text: String,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth(0.9f)
+            .heightIn(min = 100.dp)
+            .padding(vertical = 8.dp),
+        shape = RoundedCornerShape(20.dp),
+        elevation = ButtonDefaults.buttonElevation(8.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier.fillMaxWidth(),
+            fontSize = 18.sp,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+@Composable
+fun DisplayScreen(
+    title: String,
+    onBackClick: () -> Unit,
+    content: @Composable () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Button(
+                onClick = onBackClick,
+                modifier = Modifier.padding(start = 17.dp, top = 32.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+            ) {
+                Text("Back")
+            }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(30.dp))
+                Text(
+                    text = title,
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PurpleGrey40
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+                content()
+            }
+        }
+    }
+}
+
+
+
+
 
 
 
