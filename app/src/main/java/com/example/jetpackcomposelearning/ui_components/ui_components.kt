@@ -29,14 +29,14 @@ import androidx.compose.material.icons.filled.ChevronRight
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun ui_components(){
+fun Ui_Components(){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
-            text = "UI COMPONENTS ",
+            text = "UI Components",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
@@ -44,7 +44,34 @@ fun ui_components(){
         )
         Spacer(modifier = Modifier.height(20.dp))
 
-        MenuButton(title = "Display Components",onClick = {})
+        ComponentButton(title = "Display Components",onClick = {})
+        ComponentButton(title = "Action Components",onClick = {})
+        ComponentButton(title = "Input Components",onClick = {})
+        ComponentButton(title = "Selection Components",onClick = {})
+        ComponentButton(title = "Structural Components",onClick = {})
+        ComponentButton(title = "Feedback Components",onClick = {})
+        ComponentButton(title = "Overlay Components",onClick = {})
 
+    }
+}
+
+@Composable
+fun ComponentButton(title:String, onClick : () -> Unit){
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth(0.9f)
+            .heightIn(min = 100.dp)
+            .padding(vertical = 8.dp),
+        shape = RoundedCornerShape(20.dp),
+        elevation = ButtonDefaults.buttonElevation(8.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+    ){
+        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(text = title, modifier = Modifier.weight(1f), fontSize = 18.sp)
+            Icon( imageVector = Icons.Default.ChevronRight, contentDescription = null)
+
+        }
     }
 }

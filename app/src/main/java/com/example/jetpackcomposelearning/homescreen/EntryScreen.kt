@@ -54,7 +54,7 @@ fun EntryScreen() {
 }
 
 @Composable
-fun MenuButton(title : String, onClick : () ->Unit) {
+fun MenuButton(title : String, onClick : () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
@@ -69,7 +69,6 @@ fun MenuButton(title : String, onClick : () ->Unit) {
             Spacer(modifier = Modifier.width(12.dp))
             Text(text = title, modifier = Modifier.weight(1f), fontSize = 18.sp)
             Icon( imageVector = Icons.Default.ChevronRight, contentDescription = null)
-
         }
     }
 }

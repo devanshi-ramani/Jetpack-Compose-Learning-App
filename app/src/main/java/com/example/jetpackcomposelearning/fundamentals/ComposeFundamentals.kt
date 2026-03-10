@@ -37,7 +37,7 @@ fun ComposeFundamentals() {
     ) {
         item {
             Text(
-                text = "Compose Fundamentals",
+                text = "Fundamentals",
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,

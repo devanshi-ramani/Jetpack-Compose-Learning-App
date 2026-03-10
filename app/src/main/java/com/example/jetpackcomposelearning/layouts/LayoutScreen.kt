@@ -96,7 +96,7 @@ fun LayoutMenu(
     ) {
 
         Text(
-            text = " Layout Screen ",
+            text = " Layouts ",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
