@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components
+package com.example.jetpackcomposelearning.ui_components.display
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image

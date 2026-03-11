@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components
+package com.example.jetpackcomposelearning.ui_components.display
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

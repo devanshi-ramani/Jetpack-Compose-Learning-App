@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components
+package com.example.jetpackcomposelearning.ui_components.display
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -72,20 +72,6 @@ fun IconDemoScreen(onBackClick: () -> Unit) {
                     modifier = Modifier.size(40.dp),
                     tint = Color.Unspecified
                 )
-            }
-
-            IconDemoCard(
-                title = "IconButton with Icon",
-                description = "A clickable icon commonly used in toolbars or actions."
-            ) {
-                IconButton(
-                    onClick = { println("Settings clicked") }
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Settings,
-                        contentDescription = "Settings Icon"
-                    )
-                }
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components
+package com.example.jetpackcomposelearning.ui_components.action
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,9 +13,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,43 +30,42 @@ import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
 enum class ComponentType {
     MENU,
-    TEXT,
-    IMAGE,
-    ICON
+    BUTTON,
+    ICONBUTTON,
+    FLOATINGACTIONBUTTON
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DisplaySystem() {
+fun ActionSystem() {
     var currentScreen by remember { mutableStateOf(ComponentType.MENU) }
 
     when (currentScreen) {
         ComponentType.MENU -> ComponentMenu(
-            onTextClick = { currentScreen = ComponentType.TEXT },
-            onImageClick = { currentScreen = ComponentType.IMAGE },
-            onIconClick = { currentScreen = ComponentType.ICON }
+            onButtonClick = { currentScreen = ComponentType.BUTTON },
+            onIconButtonClick = { currentScreen = ComponentType.ICONBUTTON },
+            onFloatingActionButtonClick = { currentScreen = ComponentType.FLOATINGACTIONBUTTON }
         )
 
-        ComponentType.TEXT -> TextDemoScreen(
-            onBackClick = { currentScreen = ComponentType.MENU },
-        )
-
-        ComponentType.IMAGE -> ImageDemoScreen(
-            onBackClick = { currentScreen = ComponentType.MENU },
-        )
-
-        ComponentType.ICON -> IconDemoScreen(
+        ComponentType.BUTTON -> ButtonDemoScreen(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
 
+        ComponentType.ICONBUTTON -> IconButtonScreen(
+            onBackClick = { currentScreen = ComponentType.MENU }
+        )
+
+        ComponentType.FLOATINGACTIONBUTTON -> FloatingButtonScreen(
+            onBackClick = { currentScreen = ComponentType.MENU }
+        )
     }
 }
 
 @Composable
 fun ComponentMenu(
-    onTextClick: () -> Unit,
-    onImageClick: () -> Unit,
-    onIconClick: () -> Unit
+    onButtonClick: () -> Unit,
+    onIconButtonClick: () -> Unit,
+    onFloatingActionButtonClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -74,32 +73,37 @@ fun ComponentMenu(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = " Display Components ",
+            text = "Action Components",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = PurpleGrey40
         )
+
         Spacer(modifier = Modifier.height(6.dp))
+
         Text(
-            text = " Used to display information to the user. ",
+            text = "Used to perform actions from the user.",
             fontFamily = FontFamily.SansSerif,
             fontSize = 18.sp,
             color = PurpleGrey40
         )
+
         Spacer(modifier = Modifier.height(12.dp))
 
         ComponentMenuButton(
-            text = "Text",
-            onClick = onTextClick
+            text = "Button",
+            onClick = onButtonClick
         )
+
         ComponentMenuButton(
-            text = "Image",
-            onClick = onImageClick
+            text = "Icon Button",
+            onClick = onIconButtonClick
         )
+
         ComponentMenuButton(
-            text = "Icon",
-            onClick = onIconClick
+            text = "Floating Action Button",
+            onClick = onFloatingActionButtonClick
         )
     }
 }
@@ -129,46 +133,42 @@ fun ComponentMenuButton(
 }
 
 @Composable
-fun DisplayScreen(
+fun ActionScreen(
     title: String,
     onBackClick: () -> Unit,
     content: @Composable () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 24.dp)
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize()
+        Button(
+            onClick = onBackClick,
+            colors = ButtonDefaults.buttonColors(containerColor = Pink80)
         ) {
-            Button(
-                onClick = onBackClick,
-                modifier = Modifier.padding(start = 17.dp, top = 32.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Pink80)
-            ) {
-                Text("Back")
-            }
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(modifier = Modifier.height(30.dp))
-                Text(
-                    text = title,
-                    fontFamily = FontFamily.SansSerif,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PurpleGrey40
-                )
-                Spacer(modifier = Modifier.height(30.dp))
-                content()
-            }
+            Text("Back")
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text(
+            text = title,
+            modifier = Modifier.fillMaxWidth(),
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = PurpleGrey40,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            content()
         }
     }
 }
-
-
-
-
-
-
-
-
