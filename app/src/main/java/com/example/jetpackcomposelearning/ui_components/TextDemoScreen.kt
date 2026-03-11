@@ -45,9 +45,9 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
                 description = "Displays textual information on the screen."
             ) {
                 Text(
-                    text = "Hello Jetpack Compose",
+                    text = "Welcome to learning Jetpack Compose",
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Normal
                 )
             }
 
@@ -57,10 +57,10 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
             ) {
                 Text(
                     text = buildAnnotatedString {
-                        append("Learn ")
+                        append("You can learn ")
                         withStyle(
                             style = SpanStyle(
-                                color = Color.Red,
+                                color = Color.Gray,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 20.sp
                             )

@@ -4,7 +4,6 @@ import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -19,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -37,9 +37,8 @@ fun ImageDemoScreen(onBackClick: () -> Unit) {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(horizontal = 16.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
 
             DemoImageCard(
@@ -47,19 +46,26 @@ fun ImageDemoScreen(onBackClick: () -> Unit) {
                 description = "Displays images stored in the app's drawable resources."
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.frame_1),
+                    painter = painterResource(id = R.drawable.resource_frame),
                     contentDescription = "Resource Image",
-                    modifier = Modifier.size(100.dp)
+                    modifier = Modifier.size(90.dp)
                 )
             }
 
             DemoImageCard(
                 title = "Image with Bitmap",
-                description = "Displays images using a bitmap object."
+                description = "Bitmap images are loaded into memory and displayed using a Bitmap object."
             ) {
                 val bitmap = BitmapFactory.decodeResource(
                     context.resources,
-                    R.drawable.sample_image
+                    R.drawable.bitmap_image
+                )
+                Image(
+                    bitmap = bitmap.asImageBitmap(),
+                    contentDescription = "Bitmap Image",
+                    modifier = Modifier.size(80.dp),
+                    alignment = Alignment.Center,
+                    contentScale = ContentScale.Fit
                 )
             }
 
@@ -70,16 +76,16 @@ fun ImageDemoScreen(onBackClick: () -> Unit) {
                 Icon(
                     imageVector = Icons.Default.Favorite,
                     contentDescription = "Vector Image",
-                    modifier = Modifier.size(100.dp)
+                    modifier = Modifier.size(50.dp)
                 )
             }
 
             DemoImageCard(
                 title = "Network Image",
-                description = "Displays images loaded from the internet."
+                description = "Displays images loaded from the internet using a URL."
             ) {
                 AsyncImage(
-                    model = "https://picsum.photos/200",
+                    model = "https://picsum.photos/id/237/200",
                     contentDescription = "Network Image",
                     modifier = Modifier.size(100.dp)
                 )
@@ -97,7 +103,7 @@ fun DemoImageCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -106,10 +112,9 @@ fun DemoImageCard(
         ) {
             Text(
                 text = title,
-                fontSize = 20.sp,
+                fontSize = 18.sp,
                 color = PurpleGrey40
             )
-
             Text(
                 text = description,
                 fontSize = 14.sp
