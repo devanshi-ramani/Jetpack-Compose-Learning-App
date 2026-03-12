@@ -34,7 +34,6 @@ enum class LayoutScreenType {
     ROW,
     BOX,
     SCAFFOLD,
-    ALIGNMENT,
     PROPERTIES,
 }
 @Preview(showBackground = true, showSystemUi = true)
@@ -48,7 +47,6 @@ fun LayoutSystemScreen() {
             onRowClick = { currentScreen = LayoutScreenType.ROW },
             onBoxClick = { currentScreen = LayoutScreenType.BOX },
             onScaffoldClick = {currentScreen = LayoutScreenType.SCAFFOLD},
-            onAlignmentClick = { currentScreen = LayoutScreenType.ALIGNMENT},
             onWeightClick = { currentScreen = LayoutScreenType.PROPERTIES }
 
         )
@@ -68,10 +66,6 @@ fun LayoutSystemScreen() {
             onBackClick = { currentScreen = LayoutScreenType.MENU }
         )
 
-        LayoutScreenType.ALIGNMENT -> AlignmentArrangementDemoScreen(
-            onBackClick = { currentScreen = LayoutScreenType.MENU }
-        )
-
         LayoutScreenType.PROPERTIES -> LayoutPropertiesDemoScreen(
             onBackClick = { currentScreen = LayoutScreenType.MENU }
         )
@@ -84,7 +78,6 @@ fun LayoutMenu(
     onRowClick: () -> Unit,
     onBoxClick: () -> Unit,
     onScaffoldClick: () -> Unit,
-    onAlignmentClick: () -> Unit,
     onWeightClick: () -> Unit
 
 ) {
@@ -123,11 +116,6 @@ fun LayoutMenu(
         LayoutMenuButton(
             text = "Scaffold",
             onClick = onScaffoldClick
-        )
-
-        LayoutMenuButton(
-            text = "Alignment & Arrangement",
-            onClick = onAlignmentClick
         )
 
         LayoutMenuButton(

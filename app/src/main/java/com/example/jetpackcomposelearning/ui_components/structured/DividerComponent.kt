@@ -1,6 +1,5 @@
 package com.example.jetpackcomposelearning.ui_components.structured
 
-import android.graphics.Paint.Align
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposelearning.ui.theme.Pink80
@@ -32,8 +31,7 @@ enum class ComponentType {
     MENU,
     CARD,
     DIVIDER,
-    SPACER,
-    SURFACE
+    SPACER
 }
 
 
@@ -45,8 +43,7 @@ fun StructureSystem() {
         ComponentType.MENU -> ComponentMenu(
             onCardClick = { currentScreen = ComponentType. CARD},
             onDividerClick = { currentScreen = ComponentType.DIVIDER },
-            onSpacerClick = { currentScreen = ComponentType.SPACER},
-            onSurfaceClick = { currentScreen = ComponentType.SURFACE}
+            onSpacerClick = { currentScreen = ComponentType.SPACER}
         )
 
         ComponentType.CARD  -> CardComponent (
@@ -60,9 +57,6 @@ fun StructureSystem() {
         ComponentType.SPACER -> SpacerComponent(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
-        ComponentType.SURFACE -> SurfaceComponent (
-            onBackClick = { currentScreen = ComponentType.MENU }
-        )
     }
 }
 
@@ -70,8 +64,7 @@ fun StructureSystem() {
 fun ComponentMenu(
     onCardClick: () -> Unit,
     onDividerClick: () -> Unit,
-    onSpacerClick: () -> Unit,
-    onSurfaceClick: () -> Unit
+    onSpacerClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -110,11 +103,6 @@ fun ComponentMenu(
         ComponentMenuButton(
             text = "Spacer Components",
             onClick = onSpacerClick
-        )
-
-        ComponentMenuButton(
-            text = "Surface Components",
-            onClick = onSurfaceClick
         )
     }
 }
