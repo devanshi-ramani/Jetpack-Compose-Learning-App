@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components.input
+package com.example.jetpackcomposelearning.ui_components.structured
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,9 +30,10 @@ import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
 enum class ComponentType {
     MENU,
-    TEXTFIELD,
-    SELECTION,
-    SLIDER
+    CARD,
+    DIVIDER,
+    SPACER,
+    SURFACE
 }
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -42,20 +43,24 @@ fun InputSystem() {
 
     when (currentScreen) {
         ComponentType.MENU -> ComponentMenu(
-            TextFieldInput = { currentScreen = ComponentType.TEXTFIELD },
-            SelectionInput = { currentScreen = ComponentType.SELECTION },
-            SliderInput = { currentScreen = ComponentType.SLIDER }
+            CardComponent = { currentScreen = ComponentType. CARD},
+            onDividerClick = { currentScreen = ComponentType.DIVIDER },
+            onSpacerClick = { currentScreen = ComponentType.SPACER},
+            onSurfaceClick = { currentScreen = ComponentType.SURFACE}
         )
 
-        ComponentType.TEXTFIELD  -> TextFieldInput(
+        ComponentType.CARD  -> CardComponent (
             onBackClick = { currentScreen = ComponentType.MENU }
         )
 
-        ComponentType.SELECTION -> SelectionInput(
+        ComponentType.DIVIDER -> onDividerClick(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
 
-        ComponentType.SLIDER -> SliderInput(
+        ComponentType.SPACER -> onSpacerClick(
+            onBackClick = { currentScreen = ComponentType.MENU }
+        )
+        ComponentType.SURFACE -> onSurfaceClick(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
     }
@@ -63,9 +68,10 @@ fun InputSystem() {
 
 @Composable
 fun ComponentMenu(
-    TextFieldInput: () -> Unit,
-    SelectionInput: () -> Unit,
-    SliderInput: () -> Unit
+    CardComponent: () -> Unit,
+    onDividerClick: () -> Unit,
+    onSpacerClick: () -> Unit,
+    onSurfaceClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -73,7 +79,7 @@ fun ComponentMenu(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Input Components",
+            text = "Structural Components",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
@@ -92,18 +98,23 @@ fun ComponentMenu(
         Spacer(modifier = Modifier.height(12.dp))
 
         ComponentMenuButton(
-            text = "Text Input Component",
-            onClick = TextFieldInput
+            text = "Card Component",
+            onClick = CardComponent
         )
 
         ComponentMenuButton(
-            text = "Selection Components",
-            onClick = SelectionInput
+            text = "Divider Component",
+            onClick = onDividerClick
         )
 
         ComponentMenuButton(
-            text = "Slider Components",
-            onClick = SliderInput
+            text = "Spacer Components",
+            onClick = onSpacerClick
+        )
+
+        ComponentMenuButton(
+            text = "Surface Components",
+            onClick = onSurfaceClick
         )
     }
 }
@@ -133,7 +144,7 @@ fun ComponentMenuButton(
 }
 
 @Composable
-fun InputScreen(
+fun StructureScreen(
     title: String,
     onBackClick: () -> Unit,
     content: @Composable () -> Unit

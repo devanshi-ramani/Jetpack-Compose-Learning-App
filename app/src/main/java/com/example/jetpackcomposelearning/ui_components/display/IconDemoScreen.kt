@@ -1,7 +1,9 @@
 package com.example.jetpackcomposelearning.ui_components.display
 
+import android.graphics.Paint.Align
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,6 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposelearning.R
@@ -38,7 +42,7 @@ fun IconDemoScreen(onBackClick: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
-            IconDemoCard(
+            DemoCard(
                 title = "Material Icon",
                 description = "Displays standard icons from the Material Design icon library provided by Jetpack Compose."
             ) {
@@ -50,7 +54,7 @@ fun IconDemoScreen(onBackClick: () -> Unit) {
                 )
             }
 
-            IconDemoCard(
+            DemoCard(
                 title = "Icon with ImageVector",
                 description = "Displays vector-based icons using an ImageVector, which allows scalable icons without losing quality."
             ) {
@@ -62,7 +66,7 @@ fun IconDemoScreen(onBackClick: () -> Unit) {
                 )
             }
 
-            IconDemoCard(
+            DemoCard(
                 title = "Icon with painterResource",
                 description = "Displays custom icons stored in drawable resources."
             ) {
@@ -78,7 +82,7 @@ fun IconDemoScreen(onBackClick: () -> Unit) {
 }
 
 @Composable
-fun IconDemoCard(
+fun DemoCard(
     title: String,
     description: String,
     content: @Composable () -> Unit
@@ -90,20 +94,22 @@ fun IconDemoCard(
     ) {
 
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(7.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Text(
                 text = title,
-                fontSize = 18.sp,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
                 color = PurpleGrey40
+
             )
 
             Text(
                 text = description,
-                fontSize = 14.sp
+                fontSize = 15.sp
             )
 
             content()

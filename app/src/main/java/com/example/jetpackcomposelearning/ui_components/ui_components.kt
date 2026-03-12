@@ -47,7 +47,6 @@ fun Ui_Components(){
         ComponentButton(title = "Display Components",onClick = {})
         ComponentButton(title = "Action Components",onClick = {})
         ComponentButton(title = "Input Components",onClick = {})
-        ComponentButton(title = "Selection Components",onClick = {})
         ComponentButton(title = "Structural Components",onClick = {})
         ComponentButton(title = "Feedback Components",onClick = {})
         ComponentButton(title = "Overlay Components",onClick = {})

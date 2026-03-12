@@ -40,7 +40,7 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
 
-            DemoTextCard(
+            DemoCard(
                 title = "Simple Text",
                 description = "Displays textual information on the screen."
             ) {
@@ -51,7 +51,7 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
                 )
             }
 
-            DemoTextCard(
+            DemoCard(
                 title = "AnnotatedString Text",
                 description = "Used when one text needs multiple styles."
             ) {
@@ -72,7 +72,7 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
                 )
             }
 
-            DemoTextCard(
+            DemoCard(
                 title = "Clickable Text",
                 description = "Text that responds to user clicks."
             ) {
@@ -84,38 +84,6 @@ fun TextDemoScreen(onBackClick: () -> Unit) {
                     }
                 )
             }
-        }
-    }
-}
-
-@Composable
-fun DemoTextCard(
-    title: String,
-    description: String,
-    content: @Composable () -> Unit
-) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            Text(
-                text = title,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = PurpleGrey40
-            )
-
-            Text(
-                text = description,
-                fontSize = 14.sp
-            )
-
-            content()
         }
     }
 }

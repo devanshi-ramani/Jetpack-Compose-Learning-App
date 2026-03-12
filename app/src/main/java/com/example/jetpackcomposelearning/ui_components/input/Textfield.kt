@@ -1,9 +1,7 @@
 package com.example.jetpackcomposelearning.ui_components.input
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,20 +18,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
-import com.example.jetpackcomposelearning.ui_components.action.DemoButtonCard
-import com.example.jetpackcomposelearning.ui_components.display.DisplayScreen
+
 
 @Composable
-fun TextFieldInput(onBackClick:() -> Unit) {
+fun TextFieldInput(onBackClick: () -> Unit) {
     InputScreen(
         title = "Text Components",
         onBackClick = onBackClick
@@ -46,7 +39,7 @@ fun TextFieldInput(onBackClick:() -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            DemoButtonCard(
+            DemoCard(
                 title = "TextField",
                 description = "Basic text input field used to enter simple text."
             ) {
@@ -60,7 +53,7 @@ fun TextFieldInput(onBackClick:() -> Unit) {
                 }
             }
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Outlined TextField",
                 description = "Text field with an outlined border style."
             ) {
@@ -74,7 +67,7 @@ fun TextFieldInput(onBackClick:() -> Unit) {
                 }
             }
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Basic TextField",
                 description = "Low-level text input used for custom UI design."
             ) {
@@ -91,46 +84,12 @@ fun TextFieldInput(onBackClick:() -> Unit) {
             }
 
 
-
-        }
-    }
-
-
-    @Composable
-    fun DemoTextCard(
-        title: String,
-        description: String,
-        content: @Composable () -> Unit
-    ) {
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                Text(
-                    text = title,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PurpleGrey40
-                )
-
-                Text(
-                    text = description,
-                    fontSize = 14.sp
-                )
-
-                content()
-            }
         }
     }
 }
 
 @Composable
-fun DemoTextCard(
+fun DemoCard(
     title: String,
     description: String,
     content: @Composable () -> Unit
@@ -141,7 +100,7 @@ fun DemoTextCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Text(
