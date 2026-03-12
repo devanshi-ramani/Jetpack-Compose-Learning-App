@@ -36,14 +36,14 @@ enum class ComponentType {
     SURFACE
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun InputSystem() {
+fun StructureSystem() {
     var currentScreen by remember { mutableStateOf(ComponentType.MENU) }
 
     when (currentScreen) {
         ComponentType.MENU -> ComponentMenu(
-            CardComponent = { currentScreen = ComponentType. CARD},
+            onCardClick = { currentScreen = ComponentType. CARD},
             onDividerClick = { currentScreen = ComponentType.DIVIDER },
             onSpacerClick = { currentScreen = ComponentType.SPACER},
             onSurfaceClick = { currentScreen = ComponentType.SURFACE}
@@ -53,14 +53,14 @@ fun InputSystem() {
             onBackClick = { currentScreen = ComponentType.MENU }
         )
 
-        ComponentType.DIVIDER -> onDividerClick(
+        ComponentType.DIVIDER -> DividerComponent(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
 
-        ComponentType.SPACER -> onSpacerClick(
+        ComponentType.SPACER -> SpacerComponent(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
-        ComponentType.SURFACE -> onSurfaceClick(
+        ComponentType.SURFACE -> SurfaceComponent (
             onBackClick = { currentScreen = ComponentType.MENU }
         )
     }
@@ -68,7 +68,7 @@ fun InputSystem() {
 
 @Composable
 fun ComponentMenu(
-    CardComponent: () -> Unit,
+    onCardClick: () -> Unit,
     onDividerClick: () -> Unit,
     onSpacerClick: () -> Unit,
     onSurfaceClick: () -> Unit
@@ -89,7 +89,7 @@ fun ComponentMenu(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Used to collect data or selections from the user.",
+            text = "Used to visually organize or separate content.",
             fontFamily = FontFamily.SansSerif,
             fontSize = 18.sp,
             color = PurpleGrey40
@@ -99,7 +99,7 @@ fun ComponentMenu(
 
         ComponentMenuButton(
             text = "Card Component",
-            onClick = CardComponent
+            onClick = onCardClick
         )
 
         ComponentMenuButton(
