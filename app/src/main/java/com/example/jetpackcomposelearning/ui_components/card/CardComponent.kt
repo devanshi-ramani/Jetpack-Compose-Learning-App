@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components.structured
+package com.example.jetpackcomposelearning.ui_components.card
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
@@ -7,12 +7,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,27 +22,34 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
+import com.example.jetpackcomposelearning.ui_components.DemoCard
 
 @Composable
-fun CardComponent(onBackClick: () -> Unit) {
-    StructureScreen(
-        title = "Card Component",
-        onBackClick = onBackClick
+fun CardComponent() {
+    val padding = 30.dp;
+    Column(
+        modifier = Modifier.padding(padding),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
+        Text(
+            text = " Card Examples ",
+            modifier = Modifier.fillMaxWidth().padding(padding),
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = PurpleGrey40,
+            textAlign = TextAlign.Center
+        )
             DemoCard(
-                title = "Basic Card",
-                description = "A simple container used to group related UI elements."
+                title = "Filled Card",
+                description = "A simple container with use of color property."
             ) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -64,7 +72,6 @@ fun CardComponent(onBackClick: () -> Unit) {
                 description = "Card that responds to user interaction."
             ) {
                 var cardMessage by remember { mutableStateOf("Tap this card") }
-
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -90,19 +97,17 @@ fun CardComponent(onBackClick: () -> Unit) {
                 description = "Card with elevation to create shadow."
             ) {
                 ElevatedCard(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = CutCornerShape(12.dp),
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = Color(0xFFE8F5E9),
-                        contentColor = Color.Black
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 6.dp
                     ),
-                    elevation = CardDefaults.elevatedCardElevation(
-                        defaultElevation = 10.dp
-                    )
+                    modifier = Modifier
+                        .size(width = 240.dp, height = 100.dp)
                 ) {
                     Text(
-                        text = "Elevated Card",
-                        modifier = Modifier.padding(16.dp)
+                        text = "Elevated",
+                        modifier = Modifier
+                            .padding(16.dp),
+                        textAlign = TextAlign.Center,
                     )
                 }
             }
@@ -112,54 +117,20 @@ fun CardComponent(onBackClick: () -> Unit) {
                 description = "Card with a border to create separation without shadow. ."
             ) {
                 OutlinedCard(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = CardDefaults.outlinedCardColors(
-                        containerColor = Color(0xFFFFF8E1),
-                        contentColor = Color.Black
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface,
                     ),
-                    border = BorderStroke(2.dp, Color.Gray)
+                    border = BorderStroke(1.dp, Color.Black),
+                    modifier = Modifier
+                        .size(width = 240.dp, height = 100.dp)
                 ) {
                     Text(
-                        text = "Outlined Card",
-                        modifier = Modifier.padding(16.dp)
+                        text = "Outlined",
+                        modifier = Modifier
+                            .padding(16.dp),
+                        textAlign = TextAlign.Center,
                     )
                 }
             }
         }
     }
-}
-
-@Composable
-fun DemoCard(
-    title: String,
-    description: String,
-    content: @Composable () -> Unit
-) {
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(6.dp)
-    ) {
-
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-
-            Text(
-                text = title,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
-
-            Text(
-                text = description,
-                fontSize = 14.sp
-            )
-
-            content()
-        }
-    }
-}

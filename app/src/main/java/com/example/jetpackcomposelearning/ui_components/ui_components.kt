@@ -36,7 +36,6 @@ fun Ui_Components(){
             "Badge",
             "Button",
             "Card",
-            "Carousel",
             "Checkbox",
             "Chip",
             "Date pickers",
