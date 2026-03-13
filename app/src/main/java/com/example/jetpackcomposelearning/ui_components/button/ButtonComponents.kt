@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components.action
+package com.example.jetpackcomposelearning.ui_components.button
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,19 +32,21 @@ enum class ComponentType {
     MENU,
     BUTTON,
     ICONBUTTON,
-    FLOATINGACTIONBUTTON
+    FLOATINGACTIONBUTTON,
+    SEGMENTEDBUTTON
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun ActionSystem() {
+fun ButtonSystem() {
     var currentScreen by remember { mutableStateOf(ComponentType.MENU) }
 
     when (currentScreen) {
         ComponentType.MENU -> ComponentMenu(
             onButtonClick = { currentScreen = ComponentType.BUTTON },
             onIconButtonClick = { currentScreen = ComponentType.ICONBUTTON },
-            onFloatingActionButtonClick = { currentScreen = ComponentType.FLOATINGACTIONBUTTON }
+            onFloatingActionButtonClick = { currentScreen = ComponentType.FLOATINGACTIONBUTTON },
+            onSegmentedButtonClick = { currentScreen = ComponentType.SEGMENTEDBUTTON}
         )
 
         ComponentType.BUTTON -> ButtonDemoScreen(
@@ -58,6 +60,10 @@ fun ActionSystem() {
         ComponentType.FLOATINGACTIONBUTTON -> FloatingButtonScreen(
             onBackClick = { currentScreen = ComponentType.MENU }
         )
+        ComponentType.SEGMENTEDBUTTON -> SegmentedButtonScreen(
+            onBackClick = { currentScreen = ComponentType.MENU }
+        )
+
     }
 }
 
@@ -65,7 +71,8 @@ fun ActionSystem() {
 fun ComponentMenu(
     onButtonClick: () -> Unit,
     onIconButtonClick: () -> Unit,
-    onFloatingActionButtonClick: () -> Unit
+    onFloatingActionButtonClick: () -> Unit,
+    onSegmentedButtonClick: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -73,22 +80,12 @@ fun ComponentMenu(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Action Components",
+            text = "Button Components",
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = PurpleGrey40
         )
-
-        Spacer(modifier = Modifier.height(6.dp))
-
-        Text(
-            text = "Used to perform actions from the user.",
-            fontFamily = FontFamily.SansSerif,
-            fontSize = 18.sp,
-            color = PurpleGrey40
-        )
-
         Spacer(modifier = Modifier.height(12.dp))
 
         ComponentMenuButton(
@@ -104,6 +101,10 @@ fun ComponentMenu(
         ComponentMenuButton(
             text = "Floating Action Button",
             onClick = onFloatingActionButtonClick
+        )
+        ComponentMenuButton(
+            text = "Segmented Button",
+            onClick = onSegmentedButtonClick
         )
     }
 }
@@ -133,7 +134,7 @@ fun ComponentMenuButton(
 }
 
 @Composable
-fun ActionScreen(
+fun ButtonScreen(
     title: String,
     onBackClick: () -> Unit,
     content: @Composable () -> Unit

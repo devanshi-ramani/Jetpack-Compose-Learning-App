@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components.action
+package com.example.jetpackcomposelearning.ui_components.button
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,10 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
+import com.example.jetpackcomposelearning.ui_components.DemoCard
+
 
 @Composable
 fun IconButtonScreen(onBackClick: () -> Unit) {
-    ActionScreen(
+    ButtonScreen(
         title = "Icon Button Components",
         onBackClick = onBackClick
     ) {
@@ -46,7 +48,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Icon Button",
                 description = "Basic icon button used for simple actions."
             ) {
@@ -73,7 +75,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                 }
             }
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Filled Icon Button",
                 description = "Icon button with a filled background."
             ) {
@@ -102,7 +104,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                 }
             }
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Outlined Icon Button",
                 description = "Icon button with an outlined border."
             ) {
@@ -128,7 +130,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                 }
             }
 
-            DemoButtonCard(
+            DemoCard(
                 title = "Icon Toggle Button",
                 description = "Icon button that toggles between two states."
             ) {

@@ -1,4 +1,4 @@
-package com.example.jetpackcomposelearning.ui_components.display
+package com.example.jetpackcomposelearning.fundamentals.display
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
@@ -30,29 +32,47 @@ import androidx.compose.material.icons.filled.ChevronRight
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun Ui_Components(){
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Text(
-            text = "UI Components",
-            fontFamily = FontFamily.SansSerif,
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = PurpleGrey40
+        val componentList = listOf(
+            "Badge",
+            "Button",
+            "Card",
+            "Carousel",
+            "Checkbox",
+            "Chip",
+            "Date pickers",
+            "Dialog",
+            "Divider",
+            "Image",
+            "Menus",
+            "Progress indicators",
+            "Pull to refresh",
+            "Radio button",
+            "Search bar",
+            "Slider",
+            "Snack bar",
+            "Switch",
+            "Tabs"
         )
-        Spacer(modifier = Modifier.height(20.dp))
 
-        ComponentButton(title = "Display Components",onClick = {})
-        ComponentButton(title = "Action Components",onClick = {})
-        ComponentButton(title = "Input Components",onClick = {})
-        ComponentButton(title = "Structural Components",onClick = {})
-        ComponentButton(title = "Feedback Components",onClick = {})
-        ComponentButton(title = "Overlay Components",onClick = {})
-
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().padding(vertical = 30.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            item {
+                Text(
+                    text = " UI Components ",
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PurpleGrey40
+                )
+            }
+            items(componentList) { title ->
+                ComponentButton(title = title, onClick = {})
+            }
+        }
     }
-}
 
 @Composable
 fun ComponentButton(title:String, onClick : () -> Unit){

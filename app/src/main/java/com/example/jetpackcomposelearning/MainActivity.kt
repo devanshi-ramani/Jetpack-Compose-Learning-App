@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.jetpackcomposelearning.fundamentals.ComposeFundamentals
 
-import com.example.jetpackcomposelearning.homescreen.EntryScreen
-import com.example.jetpackcomposelearning.layouts.LayoutSystemScreen
-import com.example.jetpackcomposelearning.ui_components.DisplaySystem
-import com.example.jetpackcomposelearning.ui_components.ImageDemoScreen
-import com.example.jetpackcomposelearning.ui_components.TextDemoScreen
+import com.example.jetpackcomposelearning.ui_components.badge.BadgeExample
+import com.example.jetpackcomposelearning.ui_components.button.ButtonSystem
+
+//import com.example.jetpackcomposelearning.ui_components.input.InputSystem
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-//            EntryScreen()
-//            LayoutSystemScreen()
-//            ComposeFundamentals()
-            DisplaySystem()
-
-
+            ButtonSystem()
         }
     }
 }
