@@ -67,8 +67,8 @@ fun CheckboxComponent() {
         }
 
         DemoCard(
-            title = "Clickable Card",
-            description = "Card that responds to user interaction."
+            title = "Advanced Example",
+            description = "Below is advanced version for checkbox selection."
         ) {
             val childCheckedStates = remember { mutableStateListOf(false, false, false) }
 

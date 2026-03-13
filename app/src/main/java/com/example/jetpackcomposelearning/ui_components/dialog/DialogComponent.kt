@@ -1,0 +1,96 @@
+//package com.example.jetpackcomposelearning.ui_components.dialog
+//
+//import androidx.compose.foundation.clickable
+//import androidx.compose.foundation.layout.Arrangement
+//import androidx.compose.foundation.layout.Column
+//import androidx.compose.foundation.layout.fillMaxWidth
+//import androidx.compose.foundation.layout.padding
+//import androidx.compose.foundation.layout.size
+//import androidx.compose.foundation.shape.RoundedCornerShape
+//import androidx.compose.material3.Card
+//import androidx.compose.material3.CardDefaults
+//import androidx.compose.material3.ElevatedCard
+//import androidx.compose.material3.Text
+//import androidx.compose.runtime.getValue
+//import androidx.compose.runtime.mutableStateOf
+//import androidx.compose.runtime.remember
+//import androidx.compose.runtime.setValue
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.graphics.Color
+//import androidx.compose.ui.text.font.FontFamily
+//import androidx.compose.ui.text.font.FontWeight
+//import androidx.compose.ui.text.style.TextAlign
+//import androidx.compose.ui.unit.dp
+//import androidx.compose.ui.unit.sp
+//import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
+//import com.example.jetpackcomposelearning.ui_components.DemoCard
+//
+//fun DialogComponent() {
+//    val padding = 30.dp;
+//    Column(
+//        modifier = Modifier.padding(padding),
+//        verticalArrangement = Arrangement.spacedBy(20.dp),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(
+//            text = " Card Examples ",
+//            modifier = Modifier.fillMaxWidth().padding(padding),
+//            fontFamily = FontFamily.SansSerif,
+//            fontSize = 28.sp,
+//            fontWeight = FontWeight.Bold,
+//            color = PurpleGrey40,
+//            textAlign = TextAlign.Center
+//        )
+//        DemoCard(
+//            title = "Filled Card",
+//            description = "A simple container with use of color property."
+//        ) {
+//
+//        }
+//
+//        DemoCard(
+//            title = "Clickable Card",
+//            description = "Card that responds to user interaction."
+//        ) {
+//            var cardMessage by remember { mutableStateOf("Tap this card") }
+//            Card(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .clickable {
+//                        cardMessage = "Card Clicked"
+//                    },
+//                shape = RoundedCornerShape(12.dp),
+//                colors = CardDefaults.cardColors(
+//                    containerColor = Color(0xFFE3F2FD),
+//                    contentColor = Color.Black
+//                ),
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+//            ) {
+//                Text(
+//                    text = cardMessage,
+//                    modifier = Modifier.padding(16.dp)
+//                )
+//            }
+//        }
+//
+//        DemoCard(
+//            title = "Elevated Card",
+//            description = "Card with elevation to create shadow."
+//        ) {
+//            ElevatedCard(
+//                elevation = CardDefaults.cardElevation(
+//                    defaultElevation = 6.dp
+//                ),
+//                modifier = Modifier
+//                    .size(width = 240.dp, height = 100.dp)
+//            ) {
+//                Text(
+//                    text = "Elevated",
+//                    modifier = Modifier
+//                        .padding(16.dp),
+//                    textAlign = TextAlign.Center,
+//                )
+//            }
+//        }
+//}

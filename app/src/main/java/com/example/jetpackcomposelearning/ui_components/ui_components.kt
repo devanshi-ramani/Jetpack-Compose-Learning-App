@@ -37,9 +37,8 @@ fun Ui_Components(){
             "Button",
             "Card",
             "Checkbox",
-            "Chip",
-            "Date pickers",
-            "Dialog",
+            "Date pickers", // not done
+            "Dialog", // not done
             "Divider",
             "Image",
             "Menus",

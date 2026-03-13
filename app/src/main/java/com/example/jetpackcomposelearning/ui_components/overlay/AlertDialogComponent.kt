@@ -15,10 +15,8 @@ fun AlertDialogComponent(onBackClick: () -> Unit) {
         title = "AlertDialog Demo",
         onBackClick = onBackClick
     ) {
-
         var showDialog by remember { mutableStateOf(false) }
         var message by remember { mutableStateOf("Click delete to show dialog") }
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
