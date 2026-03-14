@@ -2,12 +2,10 @@ package com.example.jetpackcomposelearning.ui_components
 
 import androidx.compose.foundation.layout.Arrangement
 import com.example.jetpackcomposelearning.ui.theme.*
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -33,23 +31,19 @@ import androidx.compose.material.icons.filled.ChevronRight
 @Composable
 fun Ui_Components(){
         val componentList = listOf(
+            "Text",
             "Badge",
             "Button",
+            "BottomSheet",//
             "Card",
             "Checkbox",
-            "Date pickers", // not done
-            "Dialog", // not done
             "Divider",
+            "Dialog",//
             "Image",
             "Menus",
-            "Progress indicators",
-            "Pull to refresh",
             "Radio button",
-            "Search bar",
             "Slider",
-            "Snack bar",
-            "Switch",
-            "Tabs"
+            "Spacer"
         )
 
         LazyColumn(
