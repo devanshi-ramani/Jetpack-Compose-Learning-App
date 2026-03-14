@@ -38,12 +38,13 @@ fun Ui_Components(){
             "Card",
             "Checkbox",
             "Divider",
-            "Dialog",//
+            "Dialog",
             "Image",
             "Menus",
             "Radio button",
             "Slider",
-            "Spacer"
+            "Spacer",
+            "Switch"
         )
 
         LazyColumn(
