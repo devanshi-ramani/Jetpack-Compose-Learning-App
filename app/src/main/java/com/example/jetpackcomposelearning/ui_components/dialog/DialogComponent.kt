@@ -1,8 +1,10 @@
 package com.example.jetpackcomposelearning.ui_components.dialog
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,9 +12,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -41,7 +52,9 @@ fun DialogComponent() {
     ) {
         Text(
             text = " Dialog Example ",
-            modifier = Modifier.fillMaxWidth().padding(padding),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(padding),
             fontFamily = FontFamily.SansSerif,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
@@ -49,26 +62,91 @@ fun DialogComponent() {
             textAlign = TextAlign.Center
         )
         DemoCard(
-            title = "Filled Card",
-            description = "A simple container with use of color property."
+            title = "Alert Dialog Component ",
+            description = " On clicking below button Alert dialog will be popped up"
         ) {
-            Dialog(onDismissRequest = {}) {
-                Card(
+            val context = LocalContext.current;
+            var openDialog by remember {mutableStateOf(false)}
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
+                ),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 6.dp
+                )
+            ) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
                         .padding(16.dp),
-                    shape = RoundedCornerShape(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "This is a minimal dialog",
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(Alignment.Center),
-                        textAlign = TextAlign.Center,
+                        text = "Delete item",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.Gray
+                    )
+                    IconButton(
+                        onClick = {openDialog = true },
+                        colors = IconButtonDefaults.iconButtonColors(
+                            containerColor = Color.DarkGray,
+                            contentColor = Color.LightGray
+                        )
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Delete Item"
+                        )
+                    }
+                }
+                if(openDialog){
+                    AlertDialog(
+                        onDismissRequest = { openDialog = false },
+                        icon = {
+                            Icon(imageVector = Icons.Default.Delete,
+                                contentDescription = "Delete Icon"
+                            )
+                        },
+                        title = {
+                            Text(text = "Delete Item")
+                        },
+                        text = {Text(text = " Are you sure you want to delete this item? ")},
+                        confirmButton = {
+                            Button(onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Item has been Deleted Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                openDialog = false
+                            },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.DarkGray,
+                                    contentColor = Color.White
+                                )){
+                                Text(text = "Delete")
+                            }
+                        },
+                        dismissButton = {
+                            Button(onClick = {openDialog = false},
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.LightGray,
+                                    contentColor = Color.Gray
+                                )
+                            ){
+                            Text(text = "Cancel")
+                        }
+                        },
+                        containerColor = Color.White,
+                        titleContentColor = Color.DarkGray,
+                        textContentColor =  Color.DarkGray
                     )
                 }
             }
+
         }
     }
 }
