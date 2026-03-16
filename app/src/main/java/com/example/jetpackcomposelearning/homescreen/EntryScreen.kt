@@ -26,10 +26,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import com.example.jetpackcomposelearning.navigation.MyNavRoutes
 
-@Preview (showBackground = true, showSystemUi = true)
+
 @Composable
-fun EntryScreen() {
+fun EntryScreen(navController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -45,11 +48,10 @@ fun EntryScreen() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        MenuButton(title = "Compose Fundamentals", onClick = {})
-        MenuButton(title = "Layout System", onClick = {})
-        MenuButton(title = "UI components", onClick = {})
-        MenuButton(title = "StateManagement", onClick = {})
-        MenuButton(title = "Lists & Navigation", onClick = {})
+        MenuButton(title = "Compose Fundamentals", onClick = {navController.navigate(MyNavRoutes.ComposeFundamentals)})
+        MenuButton(title = "Layout System", onClick = {navController.navigate(MyNavRoutes.LayoutSystem)})
+        MenuButton(title = "UI components", onClick = {navController.navigate(MyNavRoutes.UIComponents)})
+//        MenuButton(title = "Lists", onClick = {})
     }
 }
 

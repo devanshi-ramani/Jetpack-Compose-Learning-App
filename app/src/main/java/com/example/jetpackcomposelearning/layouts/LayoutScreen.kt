@@ -25,6 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.jetpackcomposelearning.navigation.MyNavRoutes
 import com.example.jetpackcomposelearning.ui.theme.Pink80
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
@@ -34,11 +36,11 @@ enum class LayoutScreenType {
     ROW,
     BOX,
     SCAFFOLD,
-    PROPERTIES,
+    PROPERTIES
 }
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun LayoutSystemScreen() {
+fun LayoutSystemScreen(navController: NavController) {
     var currentScreen by remember { mutableStateOf(LayoutScreenType.MENU) }
 
     when (currentScreen) {
@@ -47,7 +49,8 @@ fun LayoutSystemScreen() {
             onRowClick = { currentScreen = LayoutScreenType.ROW },
             onBoxClick = { currentScreen = LayoutScreenType.BOX },
             onScaffoldClick = {currentScreen = LayoutScreenType.SCAFFOLD},
-            onWeightClick = { currentScreen = LayoutScreenType.PROPERTIES }
+            onWeightClick = { currentScreen = LayoutScreenType.PROPERTIES },
+            onBackClick = {navController.navigate(MyNavRoutes.EntryScreen)}
 
         )
 
@@ -78,9 +81,18 @@ fun LayoutMenu(
     onRowClick: () -> Unit,
     onBoxClick: () -> Unit,
     onScaffoldClick: () -> Unit,
-    onWeightClick: () -> Unit
+    onWeightClick: () -> Unit,
+    onBackClick: () -> Unit
 
 ) {
+    Button(
+        onClick = {onBackClick()},
+        modifier = Modifier.padding(start = 17.dp, top = 32.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+    ) {
+        Text("Back")
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -163,7 +175,7 @@ fun DemoScreen(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = title,
                 fontFamily = FontFamily.SansSerif,
@@ -171,7 +183,7 @@ fun DemoScreen(
                 fontWeight = FontWeight.Bold,
                 color = PurpleGrey40
             )
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             content()
         }
     }

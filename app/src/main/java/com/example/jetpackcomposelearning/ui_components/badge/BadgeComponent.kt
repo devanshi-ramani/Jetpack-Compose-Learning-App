@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,18 +26,28 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.jetpackcomposelearning.navigation.MyNavRoutes
+import com.example.jetpackcomposelearning.ui.theme.Pink80
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 import com.example.jetpackcomposelearning.ui_components.DemoCard
 
 
 @Composable
-fun BadgeExample() {
+fun BadgeExample(navController: NavController) {
     val padding = 30.dp;
     Column(
         modifier = Modifier.padding(padding),
-        verticalArrangement = Arrangement.spacedBy(20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
+        Button(
+            onClick = {
+                navController.navigate(MyNavRoutes.UIComponents)
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+        ) {
+            Text("Back")
+        }
         Text(
             text = " Badge Examples ",
             modifier = Modifier.fillMaxWidth().padding(padding),

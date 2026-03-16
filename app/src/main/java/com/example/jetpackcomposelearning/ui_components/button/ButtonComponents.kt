@@ -22,9 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.jetpackcomposelearning.navigation.MyNavRoutes
 import com.example.jetpackcomposelearning.ui.theme.Pink80
 import com.example.jetpackcomposelearning.ui.theme.PurpleGrey40
 
@@ -36,9 +37,18 @@ enum class ComponentType {
     SEGMENTEDBUTTON
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun ButtonSystem() {
+fun ButtonSystem(navController: NavController) {
+    Button(
+        onClick = {
+            navController.navigate(MyNavRoutes.UIComponents)
+        },
+        modifier = Modifier.padding(20.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Pink80)
+    ) {
+        Text("Back")
+    }
     var currentScreen by remember { mutableStateOf(ComponentType.MENU) }
 
     when (currentScreen) {
@@ -79,6 +89,7 @@ fun ComponentMenu(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+
         Text(
             text = "Button Components",
             fontFamily = FontFamily.SansSerif,
@@ -151,7 +162,7 @@ fun ButtonScreen(
             Text("Back")
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(15.dp))
 
         Text(
             text = title,
@@ -162,9 +173,7 @@ fun ButtonScreen(
             color = PurpleGrey40,
             textAlign = TextAlign.Center
         )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
+        Spacer(modifier = Modifier.height(10.dp))
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
