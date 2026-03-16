@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcomposelearning.fundamentals.ComposeFundamentals
 import com.example.jetpackcomposelearning.homescreen.EntryScreen
 import com.example.jetpackcomposelearning.layouts.LayoutSystemScreen
+import com.example.jetpackcomposelearning.lists.ListsComponent
 import com.example.jetpackcomposelearning.ui_components.Ui_Components
 import com.example.jetpackcomposelearning.ui_components.badge.BadgeExample
 import com.example.jetpackcomposelearning.ui_components.bottomSheet.BottomSheetComponent
@@ -93,6 +94,9 @@ fun NavGraph() {
 
         composable<MyNavRoutes.Spacer> {
             SpacerComponent(navController)
+        }
+        composable<MyNavRoutes.Lists> {
+            ListsComponent(navController)
         }
     }
 }

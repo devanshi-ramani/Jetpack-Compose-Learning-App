@@ -60,4 +60,7 @@ sealed class MyNavRoutes {
     @Serializable
     object Spacer : MyNavRoutes()
 
+    @Serializable
+    object Lists : MyNavRoutes()
+
 }

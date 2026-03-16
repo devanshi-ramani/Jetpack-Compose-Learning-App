@@ -51,7 +51,7 @@ fun EntryScreen(navController: NavHostController) {
         MenuButton(title = "Compose Fundamentals", onClick = {navController.navigate(MyNavRoutes.ComposeFundamentals)})
         MenuButton(title = "Layout System", onClick = {navController.navigate(MyNavRoutes.LayoutSystem)})
         MenuButton(title = "UI components", onClick = {navController.navigate(MyNavRoutes.UIComponents)})
-//        MenuButton(title = "Lists", onClick = {})
+        MenuButton(title = "Lists", onClick = {navController.navigate(MyNavRoutes.Lists)})
     }
 }
 
