@@ -52,6 +52,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                 title = "Icon Button",
                 description = "Basic icon button used for simple actions."
             ) {
+
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     IconButton(
                         onClick = {
@@ -64,7 +65,6 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                             modifier = Modifier.size(24.dp)
                         )
                     }
-
                     if (iconMessage.isNotEmpty()) {
                         Text(
                             text = iconMessage,
@@ -82,6 +82,7 @@ fun IconButtonScreen(onBackClick: () -> Unit) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     FilledIconButton(
                         onClick = {
+                            filledMessage = "Favorite action executed";
                             filledMessage = "Favorite action executed"
                         },
                         colors = IconButtonDefaults.filledIconButtonColors(

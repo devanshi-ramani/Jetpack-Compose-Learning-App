@@ -4,7 +4,6 @@ import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,7 +14,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
@@ -37,7 +35,7 @@ import com.example.jetpackcomposelearning.ui_components.DemoCard
 @Composable
 fun ImageDemoScreen(navController: NavController) {
     val context = LocalContext.current;
-    val padding = 15.dp;
+    val padding = 20.dp;
     Column(
         modifier = Modifier.padding(padding),
         verticalArrangement = Arrangement.spacedBy(15.dp)

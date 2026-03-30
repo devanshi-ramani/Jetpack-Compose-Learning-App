@@ -22,11 +22,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.ChevronRight
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.jetpackcomposelearning.navigation.MyNavRoutes
 
@@ -52,6 +50,7 @@ fun EntryScreen(navController: NavHostController) {
         MenuButton(title = "Layout System", onClick = {navController.navigate(MyNavRoutes.LayoutSystem)})
         MenuButton(title = "UI components", onClick = {navController.navigate(MyNavRoutes.UIComponents)})
         MenuButton(title = "Lists", onClick = {navController.navigate(MyNavRoutes.Lists)})
+
     }
 }
 

@@ -27,7 +27,7 @@ import com.example.jetpackcomposelearning.ui_components.DemoCard
 @Composable
 fun SegmentedButtonScreen (onBackClick:() -> Unit) {
     ButtonScreen(
-        title = "Floating Action Buttons",
+        title = "Segmented Buttons",
         onBackClick = onBackClick
     ) {
         Column(

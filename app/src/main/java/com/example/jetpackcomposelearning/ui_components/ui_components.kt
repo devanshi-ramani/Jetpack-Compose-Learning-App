@@ -111,8 +111,6 @@ fun ComponentButton(
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            Spacer(modifier = Modifier.width(12.dp))
-
             Text(
                 text = title,
                 modifier = Modifier.weight(1f),
